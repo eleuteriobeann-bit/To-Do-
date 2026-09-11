@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My To-Do List</h1>
+            <p class="subtitle">Stay organized and productive</p>
+        </header>
+
+        <main>
+            <!-- Input Section -->
+            <section class="input-section" aria-labelledby="add-task-heading">
+                <h2 id="add-task-heading" class="sr-only">Add a new task</h2>
+                <form id="taskForm" class="task-form">
+                    <div class="input-wrapper">
+                        <input
+                            type="text"
+                            id="taskInput"
+                            class="task-input"
+                            placeholder="Add a new task..."
+                            aria-label="Enter a new task"
+                            maxlength="255"
+                            required
+                        />
+                        <button
+                            type="submit"
+                            class="add-btn"
+                            aria-label="Add task to the list"
+                        >
+                            Add Task
+                        </button>
+                    </div>
+                    <span class="char-count" aria-live="polite" aria-atomic="true">
+                        <span id="charCounter">0</span>/255
+                    </span>
+                </form>
+            </section>
+
+            <!-- Filter Section -->
+            <section class="filter-section" aria-labelledby="filter-heading">
+                <h2 id="filter-heading" class="sr-only">Filter tasks</h2>
+                <div class="filter-buttons" role="group" aria-label="Filter tasks by status">
+                    <button
+                        class="filter-btn active"
+                        data-filter="all"
+                        aria-pressed="true"
+                        aria-label="Show all tasks"
+                    >
+                        All
+                    </button>
+                    <button
+                        class="filter-btn"
+                        data-filter="active"
+                        aria-pressed="false"
+                        aria-label="Show active tasks only"
+                    >
+                        Active
+                    </button>
+                    <button
+                        class="filter-btn"
+                        data-filter="completed"
+                        aria-pressed="false"
+                        aria-label="Show completed tasks only"
+                    >
+                        Completed
+                    </button>
+                </div>
+                <button
+                    id="clearCompleted"
+                    class="clear-btn"
+                    aria-label="Clear all completed tasks"
+                >
+                    Clear Completed
+                </button>
+            </section>
+
+            <!-- Task Counter -->
+            <section class="stats" aria-live="polite" aria-atomic="true">
+                <p class="stat-text">
+                    <span id="activeCount">0</span> active · 
+                    <span id="completedCount">0</span> completed · 
+                    <span id="totalCount">0</span> total
+                </p>
+            </section>
+
+            <!-- Task List -->
+            <section aria-labelledby="task-list-heading">
+                <h2 id="task-list-heading" class="sr-only">Task list</h2>
+                <ul id="taskList" class="task-list" role="list">
+                    <!-- Tasks will be added here dynamically -->
+                </ul>
+                <div id="emptyState" class="empty-state" role="status">
+                    <p>No tasks yet. Add one to get started!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Keyboard shortcuts: <kbd>Enter</kbd> to add, <kbd>Delete</kbd> to remove, <kbd>Space</kbd> to toggle</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
